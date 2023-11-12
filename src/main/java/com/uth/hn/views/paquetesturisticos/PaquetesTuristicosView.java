@@ -195,7 +195,7 @@ public class PaquetesTuristicosView extends Div implements BeforeEnterObserver {
         
         //cupoPersonas = new TextField("Cupo Maximo de Personas");
         IntegerField cupoPersonas = new IntegerField();
-        cupoPersonas.setLabel("Cupo Maximo de Personas");
+        cupoPersonas.setLabel("Pruebas");
         //cupoPersonas.setHelperText("Max 10 items");
         cupoPersonas.setMin(0);
         cupoPersonas.setMax(10);
