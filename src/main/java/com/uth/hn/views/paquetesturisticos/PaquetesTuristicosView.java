@@ -185,7 +185,7 @@ public class PaquetesTuristicosView extends Div implements BeforeEnterObserver {
         
         //duracion = new DatePicker("Duracion por noches");
         IntegerField duracion = new IntegerField();
-        duracion.setLabel("Duracion por pruebas");
+        duracion.setLabel("Duracion por noches");
         //cupoPersonas.setHelperText("Max 10 items");
         duracion.setMin(0);
         duracion.setMax(10);
@@ -195,7 +195,7 @@ public class PaquetesTuristicosView extends Div implements BeforeEnterObserver {
         
         //cupoPersonas = new TextField("Cupo Maximo de Personas");
         IntegerField cupoPersonas = new IntegerField();
-        cupoPersonas.setLabel("Pruebas");
+        cupoPersonas.setLabel("Cupo Maximo de Personas");
         //cupoPersonas.setHelperText("Max 10 items");
         cupoPersonas.setMin(0);
         cupoPersonas.setMax(10);
