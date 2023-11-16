@@ -8,8 +8,6 @@ public class PaquetesTuristicos {
     private String descripcion;
     private Integer duracion;
     private Integer cupoPersonas;
-    private boolean important;
-    private Integer cupo;
     
     public Integer getIdPaquete() {
 		return idPaquete;

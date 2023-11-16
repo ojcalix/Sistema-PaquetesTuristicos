@@ -8,7 +8,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+//CLASE QUE GENERA LA CONEXION
 public class DatabaseClient {
 	
 	private Retrofit retrofit;
