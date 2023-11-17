@@ -20,17 +20,18 @@ public class ReservasInteractorImpl implements ReservasInteractor{
 	
 	@Override
 	public void consultarReservas() {
-		try {
-			ReservasResponse respuesta = this.modelo.consultarReservas();
-			if(respuesta == null || respuesta.getItems() == null) {
-				this.vista.mostrarMensajeError("No hay reservas que mostrar");
-			}else {
-				this.vista.mostrarReservasEnGrid(respuesta.getItems());
-			}
-		}catch(IOException e) {
-			e.printStackTrace();
-		}		
+	    try {
+	        ReservasResponse respuesta = this.modelo.consultarReservas();
+	        if (respuesta == null || respuesta.getItems() == null) {
+	            this.vista.mostrarMensajeError("No hay reservas que mostrar");
+	        } else {
+	            this.vista.mostrarReservasEnGrid(respuesta.getItems());
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
+
 
 	@Override
 	public void crearReservas(Reservas nuevo) {
@@ -41,7 +42,7 @@ public class ReservasInteractorImpl implements ReservasInteractor{
 			}else {
 				this.vista.mostrarMensajeError("Hubo un problema al crear la reserva");
 			}
-		}catch(IOException e) {
+		}catch(Exception e) {
 			e.printStackTrace();
 		}		
 	}
