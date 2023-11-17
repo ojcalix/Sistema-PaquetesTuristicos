@@ -18,14 +18,14 @@ public class BienvenidaView extends VerticalLayout {
     public BienvenidaView() {
         setSpacing(false);
 
-        Image img = new Image("images/empty-plant.png", "placeholder plant");
-        img.setWidth("200px");
+        Image img = new Image("https://www.entornoturistico.com/wp-content/uploads/2020/09/agencia-de-viajes-1024x594.jpg", "placeholder plant");
+        img.setWidth("500px");
         add(img);
 
-        H2 header = new H2("This place intentionally left empty");
+        H2 header = new H2("Sistema de paquetes Turisticos");
         header.addClassNames(Margin.Top.XLARGE, Margin.Bottom.MEDIUM);
         add(header);
-        add(new Paragraph("It’s a place where you can grow your own UI 🤗"));
+        add(new Paragraph("Tu aplicacion ideal para que puedas reservas con nosotros"));
 
         setSizeFull();
         setJustifyContentMode(JustifyContentMode.CENTER);
