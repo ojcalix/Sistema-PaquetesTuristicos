@@ -144,20 +144,28 @@ public class PaquetesTuristicosView extends Div implements BeforeEnterObserver,P
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        Optional<Integer> paquetesId = event.getRouteParameters().get(SAMPLEPERSON_ID).map(Integer::parseInt);
+        Optional<Integer> paquetesId = event.getRouteParameters().get(SAMPLEPERSON_ID)
+            .filter(s -> !s.equals("null"))  // Filtra el valor "null"
+            .map(Integer::parseInt);
+
         if (paquetesId.isPresent()) {
             PaquetesTuristicos paquetesTuristicosFromBackend = obtenerPaquetesTuristicos(paquetesId.get());
             if (paquetesTuristicosFromBackend != null) {
                 populateForm(paquetesTuristicosFromBackend);
             } else {
                 Notification.show(
-                        String.format("The requested samplePerson was not found, ID = %s", paquetesId.get()), 3000,
-                        Notification.Position.BOTTOM_START);
+                    String.format("El paquete turístico solicitado no se encontró, ID = %s", paquetesId.get()), 
+                    3000, Notification.Position.BOTTOM_START);
                 refreshGrid();
                 event.forwardTo(PaquetesTuristicosView.class);
             }
+        } else {
+            Notification.show("Identificador de paquete turístico no válido", 3000, Notification.Position.BOTTOM_START);
+            refreshGrid();
+            event.forwardTo(PaquetesTuristicosView.class);
         }
     }
+
 
     private PaquetesTuristicos obtenerPaquetesTuristicos(Integer paquetesId) {
     	PaquetesTuristicos paquetesTuristicosEncontrado = null;
@@ -178,49 +186,51 @@ public class PaquetesTuristicosView extends Div implements BeforeEnterObserver,P
         editorDiv.setClassName("editor");
         editorLayoutDiv.add(editorDiv);
 
+     // ...
+
         FormLayout formLayout = new FormLayout();
-        
+
         nombrePaquete = new TextField("Nombre del Paquete");
         nombrePaquete.setPrefixComponent(VaadinIcon.FOLDER_ADD.create());
-        
+
         destino = new TextField("Destino");
         destino.setPrefixComponent(VaadinIcon.AIRPLANE.create());
-        
+
         precio = new NumberField();
         precio.setLabel("Precio");
-        precio.setValue(0.0);
+        precio.setValue(0.0);  // Asigna un valor Double
         Div dollarPrefix = new Div();
         dollarPrefix.setText("$");
         precio.setPrefixComponent(dollarPrefix);
-        
         add(precio);
-        
+
         descripcion = new TextField("Descripcion");
-        
-        //duracion = new DatePicker("Duracion por noches");
+
         duracion = new IntegerField();
         duracion.setLabel("Duracion por noches");
-        //cupoPersonas.setHelperText("Max 10 items");
         duracion.setMin(0);
         duracion.setMax(10);
-        duracion.setValue(2);
+        duracion.setValue(2);  // Asigna un valor Integer
         duracion.setStepButtonsVisible(true);
         add(duracion);
-        
-        //cupoPersonas = new TextField("Cupo Maximo de Personas");
+
+
         cupoPersonas = new IntegerField();
         cupoPersonas.setLabel("Cupo maximo de Personas");
-        //cupoPersonas.setHelperText("Max 10 items");
         cupoPersonas.setMin(0);
         cupoPersonas.setMax(10);
-        cupoPersonas.setValue(0);
+        cupoPersonas.setValue(0);  // Asigna un valor Integer
         cupoPersonas.setStepButtonsVisible(true);
         add(cupoPersonas);
-        //important = new Checkbox("Important");
+        
         formLayout.add(nombrePaquete, destino, precio, descripcion, duracion, cupoPersonas);
 
         editorDiv.add(formLayout);
         createButtonLayout(editorLayoutDiv);
+
+        // ...
+
+
 
         splitLayout.addToSecondary(editorLayoutDiv);
     }

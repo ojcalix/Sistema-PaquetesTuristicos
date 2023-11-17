@@ -3,6 +3,8 @@ import java.io.IOException;
 
 import com.uth.hn.data.PaquetesTuristicos;
 import com.uth.hn.data.PaquetesTuristicosResponse;
+import com.uth.hn.data.Reservas;
+import com.uth.hn.data.ReservasResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -40,5 +42,14 @@ public class DatabaseRepositoryImpl {
 		Call<ResponseBody> call = client.getDatabase().crearPaquetesTuristicos(nuevo);
 		Response<ResponseBody> response = call.execute();//AQUI SE LLAMA A LA BASE DE DATOS
 		return response.isSuccessful();
+	}
+	
+	public ReservasResponse consultarReservas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public boolean crearReservas(Reservas nuevo) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

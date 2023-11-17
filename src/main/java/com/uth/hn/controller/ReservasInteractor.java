@@ -1,5 +1,8 @@
 package com.uth.hn.controller;
 
-public interface ReservasInteractor {
+import com.uth.hn.data.Reservas;
 
+public interface ReservasInteractor {
+	void consultarReservas();
+	void crearReservas(Reservas nuevo);
 }

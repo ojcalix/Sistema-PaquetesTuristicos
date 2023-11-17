@@ -2,6 +2,8 @@ package com.uth.hn.model;
 
 import com.uth.hn.data.PaquetesTuristicos;
 import com.uth.hn.data.PaquetesTuristicosResponse;
+import com.uth.hn.data.Reservas;
+import com.uth.hn.data.ReservasResponse;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -24,4 +26,15 @@ public interface DatabaseRepository {
 	})
 	@POST("/pls/apex/202210020065/paquetes/PAQUETES_TURISTICOS")
 	Call<ResponseBody> crearPaquetesTuristicos(@Body PaquetesTuristicos nuevo);
+	
+	//
+	@GET("/pls/apex/202210020065/paquetes/RESERVAS")
+	Call<ReservasResponse> consultarReservas();
+	
+	@Headers({
+	    "Accept: application/json",
+	    "User-Agent: Retrofit-Sample-App"
+	})
+	@POST("/pls/apex/202210020065/paquetes/RESERVAS")
+	Call<ResponseBody> crearReservas(@Body Reservas nuevo);
 }
